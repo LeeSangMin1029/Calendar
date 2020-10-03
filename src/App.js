@@ -1,7 +1,6 @@
 import React from 'react';
+import CalenderTemplate from './components/CalendarTemplate';
 
-const App = () => {
-  return null;
+export default () => {
+  return <CalenderTemplate />;
 };
-
-export default App;
