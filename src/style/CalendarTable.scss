@@ -1,0 +1,7 @@
+.CalendarTable {
+  height: auto;
+  background: #fff;
+  box-sizing: border-box;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+}

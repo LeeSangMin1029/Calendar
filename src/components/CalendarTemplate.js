@@ -1,5 +1,7 @@
 import React from 'react';
 
-export default () => {
-  return <div></div>;
+const CalendarTemplate = ({ children }) => {
+  return <div>{children}</div>;
 };
+
+export default CalendarTemplate;

@@ -1,0 +1,31 @@
+.MonthTable {
+  display: flex;
+  flex-direction: column;
+  box-sizing: border-box;
+  width: 300px;
+  height: 265px;
+  .info {
+    width: 240px;
+    padding: 0px 12px 14px 12px;
+    .month {
+      text-align: center;
+    }
+  }
+  .date-list {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    width: 100%;
+  }
+  .day-list {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    .day {
+      flex-grow: 1;
+      text-align: center;
+    }
+  }
+  .date-num {
+    text-align: center;
+  }
+}
