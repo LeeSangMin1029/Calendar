@@ -1,10 +1,12 @@
 @import './utils/Style.scss';
 
 .TopFixedContent {
-  position: sticky;
+  top: 0;
   z-index: 12;
   width: 100%;
-  top: 0;
+  position: sticky;
+  background-color: white;
+  border-bottom: $border;
   .Info {
     display: flex;
     padding: 8px;
