@@ -1,0 +1,15 @@
+@import './utils/Style.scss';
+
+.TopFixedContent {
+  position: sticky;
+  z-index: 12;
+  width: 100%;
+  top: 0;
+  .Info {
+    display: flex;
+    padding: 8px;
+    .HeaderTitle {
+      @include setHeader(24px, $headerTitleColor);
+    }
+  }
+}
