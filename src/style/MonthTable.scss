@@ -1,12 +1,11 @@
 .MonthTable {
-  display: flex;
-  flex-direction: column;
   box-sizing: border-box;
-  width: 300px;
   height: 265px;
+  flex-basis: 25%;
+  min-width: 280px;
   .info {
     width: 240px;
-    padding: 0px 12px 14px 12px;
+    padding: 0px 12px 14px 16px;
     .month {
       text-align: center;
     }
