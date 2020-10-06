@@ -7,14 +7,14 @@
   position: sticky;
   background-color: white;
   border-bottom: $border;
-  .Info {
+  .info {
     padding: 8px;
     display: flex;
     justify-content: space-between;
-    .HeaderTitle {
+    .header-title {
       @include setHeader(24px, $headerTitleColor);
     }
-    .ClickMenu {
+    .click-menu {
       padding-right: 4px;
       display: flex;
       justify-content: center;

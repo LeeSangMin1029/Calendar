@@ -8,12 +8,12 @@ const TopFixedContent = () => {
 
   return (
     <header className='TopFixedContent'>
-      <div className='Info'>
-        <div className='HeaderTitle'>
+      <div className='info'>
+        <div className='header-title'>
           <span>캘린더</span>
         </div>
         <div
-          className='ClickMenu'
+          className='click-menu'
           onClick={() => {
             setIsOpenMenu(!isOpenMenu);
           }}

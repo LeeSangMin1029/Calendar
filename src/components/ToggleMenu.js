@@ -6,19 +6,19 @@ const ToggleMenu = ({ isOpenMenu }) => {
     <>
       {isOpenMenu && (
         <div className='ToggleMenu'>
-          <span className='MenuItem'>
+          <span className='menu-item'>
             <div className='txt-center'>일</div>
             <span>D</span>
           </span>
-          <span className='MenuItem'>
+          <span className='menu-item'>
             <div className='txt-center'>주</div>
             <span>W</span>
           </span>
-          <span className='MenuItem'>
+          <span className='menu-item'>
             <div className='txt-center'>월</div>
             <span>M</span>
           </span>
-          <span className='MenuItem'>
+          <span className='menu-item'>
             <div className='txt-center'>연도</div>
             <span>Y</span>
           </span>
