@@ -12,13 +12,17 @@ const MonthTable = ({ table, month }) => {
       <div className='info'>
         <div className='month'>{`${month}월`}</div>
         <div className='day-list'>
-          {dayString.map((day) => (
-            <div className='day'>{day}</div>
+          {dayString.map((day, i) => (
+            <div className='day' key={`${i + 1}day`}>
+              {day}
+            </div>
           ))}
         </div>
         <div className='date-list'>
-          {totalDayList.map((date) => (
-            <div className='date-num'>{date}</div>
+          {totalDayList.map((date, i) => (
+            <div className='date-num' key={`${i + 1}date`}>
+              {date}
+            </div>
           ))}
         </div>
       </div>

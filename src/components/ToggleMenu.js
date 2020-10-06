@@ -1,27 +1,26 @@
 import React from 'react';
 import '../style/ToggleMenu.scss';
 
+const listItem = [
+  { kor: '일', eng: 'D', id: 'itemD' },
+  { kor: '주', eng: 'W', id: 'itemW' },
+  { kor: '월', eng: 'M', id: 'itemM' },
+  { kor: '연도', eng: 'Y', id: 'itemY' },
+];
+
+const getMenuItem = ({ kor, eng, id }) => (
+  <span className='menu-item' key={id}>
+    <div className='txt-center'>{kor}</div>
+    <span>{eng}</span>
+  </span>
+);
+
 const ToggleMenu = ({ isOpenMenu }) => {
   return (
     <>
       {isOpenMenu && (
         <div className='ToggleMenu'>
-          <span className='menu-item'>
-            <div className='txt-center'>일</div>
-            <span>D</span>
-          </span>
-          <span className='menu-item'>
-            <div className='txt-center'>주</div>
-            <span>W</span>
-          </span>
-          <span className='menu-item'>
-            <div className='txt-center'>월</div>
-            <span>M</span>
-          </span>
-          <span className='menu-item'>
-            <div className='txt-center'>연도</div>
-            <span>Y</span>
-          </span>
+          {listItem.map((item) => getMenuItem(item))}
         </div>
       )}
     </>
