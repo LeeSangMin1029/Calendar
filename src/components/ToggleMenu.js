@@ -1,30 +1,27 @@
 import React from 'react';
+import { withRouter } from 'react-router-dom';
+import MenuItem from './MenuItem';
 import '../style/ToggleMenu.scss';
 
-const listItem = [
-  { kor: '일', eng: 'D', id: 'itemD' },
-  { kor: '주', eng: 'W', id: 'itemW' },
-  { kor: '월', eng: 'M', id: 'itemM' },
-  { kor: '연도', eng: 'Y', id: 'itemY' },
+const listItemInfo = [
+  { kor: '일', eng: 'D', id: 'itemD', path: '/day' },
+  { kor: '주', eng: 'W', id: 'itemW', path: '/week' },
+  { kor: '월', eng: 'M', id: 'itemM', path: '/month' },
+  { kor: '연도', eng: 'Y', id: 'itemY', path: '/year' },
 ];
 
-const getMenuItem = ({ kor, eng, id }) => (
-  <span className='menu-item' key={id}>
-    <div className='txt-center'>{kor}</div>
-    <span>{eng}</span>
-  </span>
-);
-
-const ToggleMenu = ({ isOpenMenu }) => {
+const ToggleMenu = ({ isOpenMenu, history }) => {
   return (
     <>
       {isOpenMenu && (
         <div className='ToggleMenu'>
-          {listItem.map((item) => getMenuItem(item))}
+          {listItemInfo.map((item) => (
+            <MenuItem item={item} key={item.id} history={history} />
+          ))}
         </div>
       )}
     </>
   );
 };
 
-export default ToggleMenu;
+export default withRouter(ToggleMenu);
