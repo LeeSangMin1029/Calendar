@@ -10,13 +10,13 @@ const listItemInfo = [
   { kor: '연도', eng: 'Y', id: 'itemY', path: '/year' },
 ];
 
-const ToggleMenu = ({ isOpenMenu, history }) => {
+const ToggleMenu = ({ isOpenMenu }) => {
   return (
     <>
       {isOpenMenu && (
         <div className='ToggleMenu'>
           {listItemInfo.map((item) => (
-            <MenuItem item={item} key={item.id} history={history} />
+            <MenuItem item={item} key={item.id} />
           ))}
         </div>
       )}

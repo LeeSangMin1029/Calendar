@@ -1,13 +1,15 @@
-import React, { useCallback } from 'react';
+import React from 'react';
+import { useHistory } from 'react-router-dom';
 
-const MenuItem = ({ item, history }) => {
+const MenuItem = ({ item }) => {
   const { kor, eng, path } = item;
-  const onClickToPath = useCallback((history, path) => {
-    history.push(path);
-  }, []);
+  const history = useHistory();
 
+  const onClickToPath = (path) => {
+    history.push({ pathname: path });
+  };
   return (
-    <span className='menu-item' onClick={() => onClickToPath(history, path)}>
+    <span className='menu-item' onClick={() => onClickToPath(path)}>
       <div className='txt-center'>{kor}</div>
       <span>{eng}</span>
     </span>
