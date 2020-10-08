@@ -1,5 +1,9 @@
-import React, { useState } from 'react';
+import React from 'react';
+import { useLocation } from 'react-router-dom';
+import DayView from './DayView';
+import WeekView from './WeekView';
 import MonthTable from './MonthTable';
+
 import '../style/CalendarTable.scss';
 
 const CalendarInfo = Object.freeze({
@@ -55,13 +59,29 @@ const getMonthList = (year = 0) => {
   return monthList;
 };
 
+const SelectView = ({ view }) => {
+  switch (view) {
+    case 'day':
+      return <DayView />;
+    case 'week':
+      return <WeekView />;
+    case 'month':
+      return <div></div>;
+    case 'year':
+    default:
+      return getMonthList(2020).map((table, month) => (
+        <MonthTable table={table} key={table.id} month={month + 1} />
+      ));
+  }
+};
+
+const filterView = (pathname = '/') => pathname.slice(1);
+
 const CalendarTable = () => {
-  const [monthList, setMonthList] = useState(getMonthList(2020));
+  const { pathname } = useLocation();
   return (
     <div className='CalendarTable'>
-      {monthList.map((table, month) => (
-        <MonthTable table={table} key={table.id} month={month + 1} />
-      ))}
+      <SelectView view={filterView(pathname)} />
     </div>
   );
 };
