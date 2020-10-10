@@ -1,15 +1,14 @@
 import React from 'react';
-import { useHistory } from 'react-router-dom';
 
-const MenuItem = ({ item }) => {
+const MenuItem = ({ item, onUpdateMenu }) => {
   const { kor, eng, path } = item;
-  const history = useHistory();
-
-  const onClickToPath = (path) => {
-    history.push({ pathname: path });
-  };
   return (
-    <span className='menu-item' onClick={() => onClickToPath(path)}>
+    <span
+      className='menu-item'
+      onClick={() => {
+        if (window.location.pathname !== path) onUpdateMenu(kor, { pathname: path });
+      }}
+    >
       <div className='txt-center'>{kor}</div>
       <span>{eng}</span>
     </span>
