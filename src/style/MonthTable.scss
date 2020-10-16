@@ -9,22 +9,22 @@
     .month {
       text-align: center;
     }
-  }
-  .date-list {
-    display: grid;
-    grid-template-columns: repeat(7, 1fr);
-    width: 100%;
-  }
-  .day-list {
-    display: flex;
-    flex-direction: row;
-    width: 100%;
-    .day {
-      flex-grow: 1;
+    .date-list {
+      display: grid;
+      grid-template-columns: repeat(7, 1fr);
+      width: 100%;
+    }
+    .day-list {
+      display: flex;
+      flex-direction: row;
+      width: 100%;
+      .day {
+        flex-grow: 1;
+        text-align: center;
+      }
+    }
+    .date-num {
       text-align: center;
     }
-  }
-  .date-num {
-    text-align: center;
   }
 }

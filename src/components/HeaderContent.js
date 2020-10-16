@@ -1,19 +1,19 @@
 import React from 'react';
 import ToggleMenu from './ToggleMenu';
 
-import '../style/TopFixedContent.scss';
+import '../style/HeaderContent.scss';
 
-const TopFixedContent = () => {
+const HeaderContent = () => {
   return (
-    <header className='TopFixedContent'>
+    <div className='HeaderContent'>
       <div className='info'>
         <div className='header-title'>
           <span>캘린더</span>
         </div>
         <ToggleMenu />
       </div>
-    </header>
+    </div>
   );
 };
 
-export default TopFixedContent;
+export default HeaderContent;

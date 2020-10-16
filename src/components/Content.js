@@ -3,8 +3,9 @@ import { useLocation } from 'react-router-dom';
 import DayView from './DayView';
 import WeekView from './WeekView';
 import MonthTable from './MonthTable';
+import HeaderContent from './HeaderContent';
 
-import '../style/CalendarTable.scss';
+import '../style/Content.scss';
 
 const CalendarInfo = Object.freeze({
   maxItemCount: 42,
@@ -29,10 +30,7 @@ const createDate = (year = 0, month = 0) => {
   const start = prevLastDate - prev.getDay();
   const dayList = range(1, nextLastDate);
   const prevDayList = currGetDay ? range(start, prevLastDate) : [];
-  const nextDayList = range(
-    1,
-    CalendarInfo.maxItemCount - dayList.length - prevDayList.length
-  );
+  const nextDayList = range(1, CalendarInfo.maxItemCount - dayList.length - prevDayList.length);
   return {
     firstDay: currGetDay,
     lastDate: nextLastDate,
@@ -44,12 +42,7 @@ const createDate = (year = 0, month = 0) => {
 };
 
 const getMonthList = (year = 0) => {
-  if (
-    !year ||
-    CalendarInfo.yearInfo.min > year ||
-    CalendarInfo.yearInfo.max < year
-  )
-    return;
+  if (!year || CalendarInfo.yearInfo.min > year || CalendarInfo.yearInfo.max < year) return;
   const monthList = range(1, 12).map((month, i) => {
     return {
       id: `Month${i + 1}`,
@@ -77,13 +70,16 @@ const SelectView = ({ view }) => {
 
 const filterView = (pathname = '/') => pathname.slice(1);
 
-const CalendarTable = () => {
+const Content = () => {
   const { pathname } = useLocation();
   return (
-    <div className='CalendarTable'>
-      <SelectView view={filterView(pathname)} />
-    </div>
+    <>
+      <HeaderContent />
+      <div className='Content'>
+        <SelectView view={filterView(pathname)} />
+      </div>
+    </>
   );
 };
 
-export default CalendarTable;
+export default Content;

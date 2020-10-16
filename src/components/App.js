@@ -1,16 +1,14 @@
 import React from 'react';
 import { BrowserRouter as Router } from 'react-router-dom';
-import TopFixedContent from './TopFixedContent';
-import CalenderTemplate from './CalendarTemplate';
-import BodyContent from './BodyContent';
+import Template from './Template';
+import Content from './Content';
 
 const App = () => {
   return (
     <Router>
-      <CalenderTemplate>
-        <TopFixedContent />
-        <BodyContent />
-      </CalenderTemplate>
+      <Template>
+        <Content />
+      </Template>
     </Router>
   );
 };
