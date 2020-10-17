@@ -1,18 +1,32 @@
 import React from 'react';
 import ToggleMenu from './ToggleMenu';
+import Title from './styles/Title';
 
-import '../style/HeaderContent.scss';
+import styled from 'styled-components';
+
+const Content = styled.div`
+  top: 0;
+  z-index: 5;
+  width: 100%;
+  position: sticky;
+  background-color: white;
+  border-bottom: 1px solid #cacfd2;
+`;
+
+const Info = styled.div`
+  padding: 8px;
+  display: flex;
+  justify-content: space-between;
+`;
 
 const HeaderContent = () => {
   return (
-    <div className='HeaderContent'>
-      <div className='info'>
-        <div className='header-title'>
-          <span>캘린더</span>
-        </div>
+    <Content>
+      <Info>
+        <Title>캘린더</Title>
         <ToggleMenu />
-      </div>
-    </div>
+      </Info>
+    </Content>
   );
 };
 

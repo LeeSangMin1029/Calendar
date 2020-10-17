@@ -1,8 +1,0 @@
-$headerTitleColor: #5f6368;
-$border: #dadce0 1px solid;
-
-@mixin setHeader($size, $color) {
-  font-size: $size;
-  color: $color;
-  user-select: none;
-}

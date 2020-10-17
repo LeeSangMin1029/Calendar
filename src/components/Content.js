@@ -5,13 +5,32 @@ import WeekView from './WeekView';
 import MonthTable from './MonthTable';
 import HeaderContent from './HeaderContent';
 
-import '../style/Content.scss';
+import styled from 'styled-components';
+
+const Container = styled.div`
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  height: auto;
+  padding-top: 20px;
+  padding-right: 40px;
+  margin-left: 70px;
+`;
 
 const CalendarInfo = Object.freeze({
   maxItemCount: 42,
   yearInfo: { min: 1000, max: 2999 },
   today: new Date().getDate(),
 });
+
+const arrayTo2DArray = (list = [], divide = 0) => {
+  const result = [];
+  const input = [...list];
+  while (input[0]) {
+    result.push(input.splice(0, divide));
+  }
+  return result;
+};
 
 const range = (start = 0, end = 0) =>
   start || end ? [...Array(end - start + 1).keys()].map((v) => start + v) : [];
@@ -26,18 +45,19 @@ const createDate = (year = 0, month = 0) => {
   const prev = new Date(year, indexMonth, 0);
   const prevLastDate = getLastDayOfMonth(year, indexMonth - 1);
   const nextLastDate = getLastDayOfMonth(year, month);
-  const currGetDay = current.getDay();
+  const currGetDate = current.getDay();
   const start = prevLastDate - prev.getDay();
-  const dayList = range(1, nextLastDate);
-  const prevDayList = currGetDay ? range(start, prevLastDate) : [];
-  const nextDayList = range(1, CalendarInfo.maxItemCount - dayList.length - prevDayList.length);
+  const dateList = range(1, nextLastDate);
+  const prevDateList = currGetDate ? range(start, prevLastDate) : [];
+  const nextDateList = range(1, CalendarInfo.maxItemCount - dateList.length - prevDateList.length);
+  const totalDateList = arrayTo2DArray(prevDateList.concat(dateList, nextDateList), 7);
   return {
-    firstDay: currGetDay,
+    firstDay: currGetDate,
     lastDate: nextLastDate,
-    dayList: dayList,
-    prevDayList: prevDayList,
-    nextDayList: nextDayList,
-    totalDayList: prevDayList.concat(dayList, nextDayList),
+    dateList: dateList,
+    prevDateList: prevDateList,
+    nextDateList: nextDateList,
+    totalDateList: totalDateList,
   };
 };
 
@@ -75,9 +95,9 @@ const Content = () => {
   return (
     <>
       <HeaderContent />
-      <div className='Content'>
+      <Container>
         <SelectView view={filterView(pathname)} />
-      </div>
+      </Container>
     </>
   );
 };

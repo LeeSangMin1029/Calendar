@@ -1,32 +1,67 @@
 import React from 'react';
-import '../style/MonthTable.scss';
 
-const dayString = ['일', '월', '화', '수', '목', '금', '토'];
+import styled from 'styled-components';
+import { TA_CENTER } from './styles/utils/Global';
+
+const Content = styled.div`
+  width: 240px;
+  padding: 0px 12px 14px 16px;
+`;
+
+const Container = styled.div`
+  height: 265px;
+  flex-basis: 25%;
+  min-width: 280px;
+`;
+
+const Title = styled.div`
+  ${TA_CENTER};
+`;
+
+const Table = styled.div`
+  display: table;
+  width: 100%;
+  ${TA_CENTER};
+`;
+
+const Row = styled.div`
+  display: table-row;
+`;
+
+const RowGroup = styled.div`
+  display: table-row-group;
+`;
+
+const Cell = styled.div`
+  display: table-cell;
+`;
+
+const DayInfo = { dayList: ['일', '월', '화', '수', '목', '금', '토'], uid: 'DayString' };
+
+const ListCell = (list, appendKey) => (
+  <Row key={appendKey}>
+    {list.map((item, i) => (
+      <Cell key={`${appendKey}${i + 1}`}>{item}</Cell>
+    ))}
+  </Row>
+);
 
 const MonthTable = ({ table, month }) => {
   const {
-    contents: { totalDayList },
+    contents: { totalDateList },
   } = table;
   return (
-    <div className='MonthTable'>
-      <div className='info'>
-        <div className='month'>{`${month}월`}</div>
-        <div className='day-list'>
-          {dayString.map((day, i) => (
-            <div className='day' key={`${i + 1}day`}>
-              {day}
-            </div>
-          ))}
-        </div>
-        <div className='date-list'>
-          {totalDayList.map((date, i) => (
-            <div className='date-num' key={`${i + 1}date`}>
-              {date}
-            </div>
-          ))}
-        </div>
-      </div>
-    </div>
+    <Container>
+      <Content>
+        <Title>{`${month}월`}</Title>
+        <Table>
+          {ListCell(DayInfo.dayList, DayInfo.uid)}
+          <RowGroup>
+            {totalDateList.map((dateList, i) => ListCell(dateList, `${i + 1}week`))}
+          </RowGroup>
+        </Table>
+      </Content>
+    </Container>
   );
 };
 
